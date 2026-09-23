@@ -1,0 +1,26 @@
+{
+  "name": "SDK Orchestration Hub — Subaga Digital Kreatif",
+  "short_name": "SDK Hub",
+  "description": "Centralized project management, orchestration, and client cockpit platform for Subaga Digital Kreatif.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#0284c7",
+  "orientation": "any",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

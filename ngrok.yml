@@ -1,0 +1,9 @@
+version: "2"
+authtoken: 3JdOrNwHr0lSqax5ZtDLkknlVjE_6vkfsAQ68NDdbX6YgHqv1
+tunnels:
+  sdk-hub:
+    proto: http
+    addr: 5173
+    request_header:
+      add:
+        - "ngrok-skip-browser-warning: true"

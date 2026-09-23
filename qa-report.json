@@ -1,0 +1,1095 @@
+{
+  "timestamp": "2026-09-17T07:16:36.762Z",
+  "baseUrl": "http://localhost:5173",
+  "consoleErrors": [],
+  "networkErrors": [
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.22222222-2222-2222-2222-222222222222&is_system=eq.false",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/login",
+      "timestamp": "2026-09-17T07:16:39.961Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/",
+      "timestamp": "2026-09-17T07:16:40.636Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/",
+      "timestamp": "2026-09-17T07:16:43.398Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/projects",
+      "timestamp": "2026-09-17T07:16:46.138Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/kanban",
+      "timestamp": "2026-09-17T07:16:48.485Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/timeline",
+      "timestamp": "2026-09-17T07:16:50.934Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/timeline/global",
+      "timestamp": "2026-09-17T07:16:53.696Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/resources",
+      "timestamp": "2026-09-17T07:16:56.419Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false&created_at=gt.2026-09-17T07%3A16%3A59.247Z",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/files",
+      "timestamp": "2026-09-17T07:17:01.631Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false&created_at=gt.2026-09-17T07%3A16%3A59.247Z",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/clients",
+      "timestamp": "2026-09-17T07:17:04.710Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false&created_at=gt.2026-09-17T07%3A16%3A59.247Z",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/templates",
+      "timestamp": "2026-09-17T07:17:07.280Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false&created_at=gt.2026-09-17T07%3A16%3A59.247Z",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/users",
+      "timestamp": "2026-09-17T07:17:10.450Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false&created_at=gt.2026-09-17T07%3A16%3A59.247Z",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/reports",
+      "timestamp": "2026-09-17T07:17:13.467Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false&created_at=gt.2026-09-17T07%3A16%3A59.247Z",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/activity",
+      "timestamp": "2026-09-17T07:17:16.197Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false&created_at=gt.2026-09-17T07%3A16%3A59.247Z",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/time-tracking",
+      "timestamp": "2026-09-17T07:17:19.235Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false&created_at=gt.2026-09-17T07%3A16%3A59.247Z",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/notifications",
+      "timestamp": "2026-09-17T07:17:22.879Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false&created_at=gt.2026-09-17T07%3A16%3A59.247Z",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/settings",
+      "timestamp": "2026-09-17T07:17:25.859Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.11111111-1111-1111-1111-111111111111&is_system=eq.false&created_at=gt.2026-09-17T07%3A16%3A59.247Z",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/login",
+      "timestamp": "2026-09-17T07:17:28.231Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.66666666-6666-6666-6666-666666666666&is_system=eq.false&created_at=gt.2026-09-17T07%3A16%3A59.247Z",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/cockpit",
+      "timestamp": "2026-09-17T07:17:29.940Z"
+    },
+    {
+      "url": "https://txalmuvcfihqxvydford.supabase.co/rest/v1/messages?select=id%2Ccreated_at%2Csender_id%2Cis_system&sender_id=neq.66666666-6666-6666-6666-666666666666&is_system=eq.false&created_at=gt.2026-09-17T07%3A16%3A59.247Z",
+      "method": "HEAD",
+      "failure": "net::ERR_ABORTED",
+      "page": "http://localhost:5173/cockpit",
+      "timestamp": "2026-09-17T07:17:31.653Z"
+    }
+  ],
+  "pageLoadTimes": [
+    {
+      "route": "/",
+      "name": "Dashboard / Root",
+      "loadTimeMs": 1774,
+      "status": "PASS"
+    },
+    {
+      "route": "/projects",
+      "name": "Projects Directory",
+      "loadTimeMs": 1393,
+      "status": "PASS"
+    },
+    {
+      "route": "/kanban",
+      "name": "Orchestration Board",
+      "loadTimeMs": 1463,
+      "status": "PASS"
+    },
+    {
+      "route": "/timeline",
+      "name": "Timeline / Gantt",
+      "loadTimeMs": 1557,
+      "status": "PASS"
+    },
+    {
+      "route": "/timeline/global",
+      "name": "Global Timeline",
+      "loadTimeMs": 1411,
+      "status": "PASS"
+    },
+    {
+      "route": "/resources",
+      "name": "Resources",
+      "loadTimeMs": 1634,
+      "status": "PASS"
+    },
+    {
+      "route": "/chat",
+      "name": "Realtime Chat",
+      "loadTimeMs": 1571,
+      "status": "PASS"
+    },
+    {
+      "route": "/files",
+      "name": "Files Repository",
+      "loadTimeMs": 2061,
+      "status": "PASS"
+    },
+    {
+      "route": "/clients",
+      "name": "Clients Management",
+      "loadTimeMs": 1378,
+      "status": "PASS"
+    },
+    {
+      "route": "/templates",
+      "name": "Templates",
+      "loadTimeMs": 2116,
+      "status": "PASS"
+    },
+    {
+      "route": "/users",
+      "name": "Users Management",
+      "loadTimeMs": 2116,
+      "status": "PASS"
+    },
+    {
+      "route": "/reports",
+      "name": "Reports & Analytics",
+      "loadTimeMs": 1418,
+      "status": "PASS"
+    },
+    {
+      "route": "/activity",
+      "name": "Activity Log",
+      "loadTimeMs": 2113,
+      "status": "PASS"
+    },
+    {
+      "route": "/time-tracking",
+      "name": "Time Tracking",
+      "loadTimeMs": 2105,
+      "status": "PASS"
+    },
+    {
+      "route": "/notifications",
+      "name": "Notifications",
+      "loadTimeMs": 2116,
+      "status": "PASS"
+    },
+    {
+      "route": "/settings",
+      "name": "Settings",
+      "loadTimeMs": 1677,
+      "status": "PASS"
+    },
+    {
+      "route": "/cockpit",
+      "name": "Client Cockpit (CLIENT)",
+      "loadTimeMs": 1657,
+      "status": "PASS"
+    }
+  ],
+  "visualChecks": [],
+  "functionalChecks": [
+    {
+      "test": "Login with invalid email",
+      "result": "PASS",
+      "severity": "OK"
+    },
+    {
+      "test": "Dashboard Admin loads with content",
+      "result": "PASS",
+      "details": {
+        "hasSummaryCards": true,
+        "hasCharts": false,
+        "bodyTextSample": "SDK Hub\nv2.5\nDashboard Eksekutif\nRUANG KERJA PROYEK\nPapan Orkestrasi\nJadwal Proyek\nKokpit Klien\nBerkas & Dokumen\nUMUM & OPERASIONAL\nJadwal Global\nChat\nSumber Daya & Tim\nPresensi Jam Kerja\nTATA KELOLA & MANAJEMEN\nManajemen Klien\nTemplate Alur Kerja\nLog Audit Aktivitas\nManajemen Pengguna\nLaporan & Ana"
+      }
+    },
+    {
+      "test": "Sidebar navigation links",
+      "result": "PASS",
+      "count": 17,
+      "links": [
+        {
+          "href": "/",
+          "text": "SDK Hub"
+        },
+        {
+          "href": "/",
+          "text": "Dashboard Eksekutif"
+        },
+        {
+          "href": "/kanban",
+          "text": "Papan Orkestrasi"
+        },
+        {
+          "href": "/timeline",
+          "text": "Jadwal Proyek"
+        },
+        {
+          "href": "/cockpit",
+          "text": "Kokpit Klien"
+        },
+        {
+          "href": "/files",
+          "text": "Berkas & Dokumen"
+        },
+        {
+          "href": "/timeline/global",
+          "text": "Jadwal Global"
+        },
+        {
+          "href": "/chat",
+          "text": "Chat"
+        },
+        {
+          "href": "/resources",
+          "text": "Sumber Daya & Tim"
+        },
+        {
+          "href": "/time-tracking",
+          "text": "Presensi Jam Kerja"
+        },
+        {
+          "href": "/clients",
+          "text": "Manajemen Klien"
+        },
+        {
+          "href": "/templates",
+          "text": "Template Alur Kerja"
+        },
+        {
+          "href": "/activity",
+          "text": "Log Audit Aktivitas"
+        },
+        {
+          "href": "/users",
+          "text": "Manajemen Pengguna"
+        },
+        {
+          "href": "/reports",
+          "text": "Laporan & Analitik"
+        }
+      ]
+    },
+    {
+      "test": "Theme toggle",
+      "result": "PASS"
+    },
+    {
+      "test": "Language toggle",
+      "result": "PASS"
+    },
+    {
+      "test": "Kanban Board loads",
+      "result": "PASS",
+      "details": {
+        "hasColumns": false,
+        "hasCards": 1,
+        "bodySnippet": "SDK Hub\nv2.5\nDashboard Eksekutif\nRUANG KERJA PROYEK\nPapan Orkestrasi\nJadwal Proyek\nKokpit Klien\nBerkas & Dokumen\nUMUM & OPERASIONAL\nJadwal Global\nChat\nSumber Daya & Tim\nPresensi Jam Kerja\nTATA KELOLA & MANAJEMEN\nManajemen Klien\nTemplate Alur Kerja\nLog Audit Aktivitas\nManajemen Pengguna\nLaporan & Ana"
+      }
+    },
+    {
+      "test": "Chat page loads",
+      "result": "PASS",
+      "details": {
+        "hasConversations": true,
+        "hasComposer": true,
+        "bodySnippet": "SDK Hub\nv2.5\nDashboard Eksekutif\nRUANG KERJA PROYEK\nPapan Orkestrasi\nJadwal Proyek\nKokpit Klien\nBerkas & Dokumen\nUMUM & OPERASIONAL\nJadwal Global\nChat\nSumber Daya & Tim\nPresensi Jam Kerja\nTATA KELOLA & MANAJEMEN\nManajemen Klien\nTemplate Alur Kerja\nLog Audit Aktivitas\nManajemen Pengguna\nLaporan & Ana"
+      }
+    },
+    {
+      "test": "Client Cockpit loads",
+      "result": "PASS",
+      "details": {
+        "hasProjectProgress": true,
+        "hasMilestone": true,
+        "hasDeliverables": true,
+        "bodySnippet": "SDK Hub\nv2.5\nRUANG KERJA PROYEK\nKokpit Klien\nProyek Saya\nBerkas & Dokumen\nUMUM & OPERASIONAL\nChat Proyek\nSISTEM\nNotifikasi\nPengaturan\nCiutkan Sidebar\nSDK-PRJ-2026-217\nSISINFO\n/\nKokpit Klien\nCari proyek, tugas... (⌘K)\n⌘K\nID\ndr. Budi Santoso\nCLIENT\nKokpit Klien\n\nProgres proyek, tahapan milestone, verifikasi berkas deliverable, dan pelacakan revisi.\n\nSDK-PRJ-2026-217 - SISINFO\nSDK-PRJ-2026-791 - Soci"
+      }
+    },
+    {
+      "test": "Staff Dashboard loads",
+      "result": "PASS",
+      "details": {
+        "hasClockIn": true,
+        "hasTasks": true,
+        "bodySnippet": "SDK Hub\nv2.5\nDashboard Staf\nRUANG KERJA PROYEK\nPapan Orkestrasi\nJadwal Proyek\nBerkas & Dokumen\nUMUM & OPERASIONAL\nJadwal Global\nChat\nSumber Daya & Tim\nPresensi Jam Kerja\nSISTEM\nNotifikasi\nPengaturan\nCiutkan Sidebar\nSDK-PRJ-2026-217\nSISINFO\n/\nDashboard\nCari proyek, tugas... (⌘K)\n⌘K\nID\nTugas Baru\nHadi"
+      }
+    },
+    {
+      "test": "Accessibility - /",
+      "result": "WARN",
+      "details": {
+        "totalButtons": 15,
+        "buttonsWithoutLabel": 1,
+        "totalInputs": 0,
+        "inputsWithoutLabel": 0,
+        "totalImages": 1,
+        "imagesWithoutAlt": 0
+      }
+    },
+    {
+      "test": "Accessibility - /kanban",
+      "result": "WARN",
+      "details": {
+        "totalButtons": 29,
+        "buttonsWithoutLabel": 1,
+        "totalInputs": 2,
+        "inputsWithoutLabel": 1,
+        "totalImages": 1,
+        "imagesWithoutAlt": 0
+      }
+    },
+    {
+      "test": "Accessibility - /chat",
+      "result": "WARN",
+      "details": {
+        "totalButtons": 27,
+        "buttonsWithoutLabel": 1,
+        "totalInputs": 3,
+        "inputsWithoutLabel": 1,
+        "totalImages": 6,
+        "imagesWithoutAlt": 0
+      }
+    },
+    {
+      "test": "Accessibility - /settings",
+      "result": "WARN",
+      "details": {
+        "totalButtons": 18,
+        "buttonsWithoutLabel": 1,
+        "totalInputs": 5,
+        "inputsWithoutLabel": 5,
+        "totalImages": 2,
+        "imagesWithoutAlt": 0
+      }
+    },
+    {
+      "test": "Accessibility - /projects",
+      "result": "WARN",
+      "details": {
+        "totalButtons": 25,
+        "buttonsWithoutLabel": 3,
+        "totalInputs": 3,
+        "inputsWithoutLabel": 2,
+        "totalImages": 1,
+        "imagesWithoutAlt": 0
+      }
+    }
+  ],
+  "responsiveChecks": [
+    {
+      "viewport": "Mobile-360",
+      "page": "Dashboard",
+      "hasHorizontalOverflow": false,
+      "docWidth": 360,
+      "viewWidth": 360
+    },
+    {
+      "viewport": "Mobile-360",
+      "page": "Kanban",
+      "hasHorizontalOverflow": false,
+      "docWidth": 360,
+      "viewWidth": 360
+    },
+    {
+      "viewport": "Mobile-360",
+      "page": "Chat",
+      "hasHorizontalOverflow": false,
+      "docWidth": 360,
+      "viewWidth": 360
+    },
+    {
+      "viewport": "Mobile-360",
+      "page": "Projects",
+      "hasHorizontalOverflow": false,
+      "docWidth": 360,
+      "viewWidth": 360
+    },
+    {
+      "viewport": "Mobile-360",
+      "page": "Settings",
+      "hasHorizontalOverflow": false,
+      "docWidth": 360,
+      "viewWidth": 360
+    },
+    {
+      "viewport": "Mobile-375",
+      "page": "Dashboard",
+      "hasHorizontalOverflow": false,
+      "docWidth": 375,
+      "viewWidth": 375
+    },
+    {
+      "viewport": "Mobile-375",
+      "page": "Kanban",
+      "hasHorizontalOverflow": false,
+      "docWidth": 375,
+      "viewWidth": 375
+    },
+    {
+      "viewport": "Mobile-375",
+      "page": "Chat",
+      "hasHorizontalOverflow": false,
+      "docWidth": 375,
+      "viewWidth": 375
+    },
+    {
+      "viewport": "Mobile-375",
+      "page": "Projects",
+      "hasHorizontalOverflow": false,
+      "docWidth": 375,
+      "viewWidth": 375
+    },
+    {
+      "viewport": "Mobile-375",
+      "page": "Settings",
+      "hasHorizontalOverflow": false,
+      "docWidth": 375,
+      "viewWidth": 375
+    },
+    {
+      "viewport": "Mobile-414",
+      "page": "Dashboard",
+      "hasHorizontalOverflow": false,
+      "docWidth": 414,
+      "viewWidth": 414
+    },
+    {
+      "viewport": "Mobile-414",
+      "page": "Kanban",
+      "hasHorizontalOverflow": false,
+      "docWidth": 414,
+      "viewWidth": 414
+    },
+    {
+      "viewport": "Mobile-414",
+      "page": "Chat",
+      "hasHorizontalOverflow": false,
+      "docWidth": 414,
+      "viewWidth": 414
+    },
+    {
+      "viewport": "Mobile-414",
+      "page": "Projects",
+      "hasHorizontalOverflow": false,
+      "docWidth": 414,
+      "viewWidth": 414
+    },
+    {
+      "viewport": "Mobile-414",
+      "page": "Settings",
+      "hasHorizontalOverflow": false,
+      "docWidth": 414,
+      "viewWidth": 414
+    },
+    {
+      "viewport": "Tablet-768",
+      "page": "Dashboard",
+      "hasHorizontalOverflow": false,
+      "docWidth": 768,
+      "viewWidth": 768
+    },
+    {
+      "viewport": "Tablet-768",
+      "page": "Kanban",
+      "hasHorizontalOverflow": false,
+      "docWidth": 768,
+      "viewWidth": 768
+    },
+    {
+      "viewport": "Tablet-768",
+      "page": "Chat",
+      "hasHorizontalOverflow": false,
+      "docWidth": 768,
+      "viewWidth": 768
+    },
+    {
+      "viewport": "Tablet-768",
+      "page": "Projects",
+      "hasHorizontalOverflow": false,
+      "docWidth": 768,
+      "viewWidth": 768
+    },
+    {
+      "viewport": "Tablet-768",
+      "page": "Settings",
+      "hasHorizontalOverflow": false,
+      "docWidth": 768,
+      "viewWidth": 768
+    },
+    {
+      "viewport": "Tablet-820",
+      "page": "Dashboard",
+      "hasHorizontalOverflow": false,
+      "docWidth": 820,
+      "viewWidth": 820
+    },
+    {
+      "viewport": "Tablet-820",
+      "page": "Kanban",
+      "hasHorizontalOverflow": false,
+      "docWidth": 820,
+      "viewWidth": 820
+    },
+    {
+      "viewport": "Tablet-820",
+      "page": "Chat",
+      "hasHorizontalOverflow": false,
+      "docWidth": 820,
+      "viewWidth": 820
+    },
+    {
+      "viewport": "Tablet-820",
+      "page": "Projects",
+      "hasHorizontalOverflow": false,
+      "docWidth": 820,
+      "viewWidth": 820
+    },
+    {
+      "viewport": "Tablet-820",
+      "page": "Settings",
+      "hasHorizontalOverflow": false,
+      "docWidth": 820,
+      "viewWidth": 820
+    },
+    {
+      "viewport": "Desktop-1024",
+      "page": "Dashboard",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1024,
+      "viewWidth": 1024
+    },
+    {
+      "viewport": "Desktop-1024",
+      "page": "Kanban",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1024,
+      "viewWidth": 1024
+    },
+    {
+      "viewport": "Desktop-1024",
+      "page": "Chat",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1024,
+      "viewWidth": 1024
+    },
+    {
+      "viewport": "Desktop-1024",
+      "page": "Projects",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1024,
+      "viewWidth": 1024
+    },
+    {
+      "viewport": "Desktop-1024",
+      "page": "Settings",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1024,
+      "viewWidth": 1024
+    },
+    {
+      "viewport": "Desktop-1280",
+      "page": "Dashboard",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1280,
+      "viewWidth": 1280
+    },
+    {
+      "viewport": "Desktop-1280",
+      "page": "Kanban",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1280,
+      "viewWidth": 1280
+    },
+    {
+      "viewport": "Desktop-1280",
+      "page": "Chat",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1280,
+      "viewWidth": 1280
+    },
+    {
+      "viewport": "Desktop-1280",
+      "page": "Projects",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1280,
+      "viewWidth": 1280
+    },
+    {
+      "viewport": "Desktop-1280",
+      "page": "Settings",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1280,
+      "viewWidth": 1280
+    },
+    {
+      "viewport": "Desktop-1440",
+      "page": "Dashboard",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1440,
+      "viewWidth": 1440
+    },
+    {
+      "viewport": "Desktop-1440",
+      "page": "Kanban",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1440,
+      "viewWidth": 1440
+    },
+    {
+      "viewport": "Desktop-1440",
+      "page": "Chat",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1440,
+      "viewWidth": 1440
+    },
+    {
+      "viewport": "Desktop-1440",
+      "page": "Projects",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1440,
+      "viewWidth": 1440
+    },
+    {
+      "viewport": "Desktop-1440",
+      "page": "Settings",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1440,
+      "viewWidth": 1440
+    },
+    {
+      "viewport": "Desktop-1920",
+      "page": "Dashboard",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1920,
+      "viewWidth": 1920
+    },
+    {
+      "viewport": "Desktop-1920",
+      "page": "Kanban",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1920,
+      "viewWidth": 1920
+    },
+    {
+      "viewport": "Desktop-1920",
+      "page": "Chat",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1920,
+      "viewWidth": 1920
+    },
+    {
+      "viewport": "Desktop-1920",
+      "page": "Projects",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1920,
+      "viewWidth": 1920
+    },
+    {
+      "viewport": "Desktop-1920",
+      "page": "Settings",
+      "hasHorizontalOverflow": false,
+      "docWidth": 1920,
+      "viewWidth": 1920
+    }
+  ],
+  "rbacChecks": [
+    {
+      "role": "ADMIN",
+      "accessible": [
+        "/",
+        "/projects",
+        "/kanban",
+        "/timeline",
+        "/timeline/global",
+        "/resources",
+        "/chat",
+        "/files",
+        "/clients",
+        "/templates",
+        "/users",
+        "/reports",
+        "/activity",
+        "/time-tracking",
+        "/notifications",
+        "/settings",
+        "/cockpit"
+      ],
+      "blocked": [],
+      "issues": []
+    },
+    {
+      "role": "PROJECT_LEAD",
+      "accessible": [
+        "/",
+        "/projects",
+        "/kanban",
+        "/timeline",
+        "/timeline/global",
+        "/resources",
+        "/chat",
+        "/files",
+        "/clients",
+        "/templates",
+        "/reports",
+        "/activity",
+        "/time-tracking",
+        "/notifications",
+        "/settings",
+        "/cockpit"
+      ],
+      "blocked": [
+        "/users"
+      ],
+      "issues": []
+    },
+    {
+      "role": "STAFF",
+      "accessible": [
+        "/",
+        "/projects",
+        "/kanban",
+        "/timeline",
+        "/timeline/global",
+        "/resources",
+        "/chat",
+        "/files",
+        "/time-tracking",
+        "/notifications",
+        "/settings"
+      ],
+      "blocked": [
+        "/clients",
+        "/templates",
+        "/users",
+        "/reports",
+        "/activity",
+        "/cockpit"
+      ],
+      "issues": []
+    },
+    {
+      "role": "CLIENT",
+      "accessible": [
+        "/chat",
+        "/notifications",
+        "/settings",
+        "/cockpit"
+      ],
+      "blocked": [
+        "/kanban",
+        "/timeline",
+        "/timeline/global",
+        "/resources",
+        "/clients",
+        "/templates",
+        "/users",
+        "/reports",
+        "/activity",
+        "/time-tracking"
+      ],
+      "issues": [
+        {
+          "route": "/",
+          "issue": "CLIENT should NOT have access but was allowed",
+          "severity": "CRITICAL"
+        },
+        {
+          "route": "/projects",
+          "issue": "CLIENT should NOT have access but was allowed",
+          "severity": "CRITICAL"
+        },
+        {
+          "route": "/files",
+          "issue": "CLIENT should NOT have access but was allowed",
+          "severity": "CRITICAL"
+        }
+      ]
+    }
+  ],
+  "securityChecks": [
+    {
+      "test": "SQL Injection in login email",
+      "result": "PASS - Rejected",
+      "severity": "OK"
+    },
+    {
+      "test": "XSS Protection (React)",
+      "result": "PASS - React auto-escapes by default via JSX",
+      "note": "React JSX escapes HTML by default. Only dangerouslySetInnerHTML could be vulnerable.",
+      "severity": "OK"
+    },
+    {
+      "test": "Service Role Key Exposure",
+      "result": "CRITICAL - Service role key found in frontend JS",
+      "severity": "CRITICAL"
+    },
+    {
+      "test": "Database Password Exposure",
+      "result": "PASS - No DB credentials in frontend",
+      "severity": "OK"
+    },
+    {
+      "test": "Secret Keys Exposure",
+      "result": "HIGH - Secret keys found in frontend",
+      "severity": "HIGH"
+    },
+    {
+      "test": "Uses Anon Key (not service role)",
+      "result": "PASS - supabase.ts uses VITE_SUPABASE_ANON_KEY (verified from source)",
+      "severity": "OK"
+    }
+  ],
+  "roleFlows": {},
+  "screenshots": [
+    {
+      "name": "phase1_admin_Dashboard / Root",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_dashboard___root.png"
+    },
+    {
+      "name": "phase1_admin_Projects Directory",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_projects_directory.png"
+    },
+    {
+      "name": "phase1_admin_Orchestration Board",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_orchestration_board.png"
+    },
+    {
+      "name": "phase1_admin_Timeline / Gantt",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_timeline___gantt.png"
+    },
+    {
+      "name": "phase1_admin_Global Timeline",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_global_timeline.png"
+    },
+    {
+      "name": "phase1_admin_Resources",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_resources.png"
+    },
+    {
+      "name": "phase1_admin_Realtime Chat",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_realtime_chat.png"
+    },
+    {
+      "name": "phase1_admin_Files Repository",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_files_repository.png"
+    },
+    {
+      "name": "phase1_admin_Clients Management",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_clients_management.png"
+    },
+    {
+      "name": "phase1_admin_Templates",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_templates.png"
+    },
+    {
+      "name": "phase1_admin_Users Management",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_users_management.png"
+    },
+    {
+      "name": "phase1_admin_Reports & Analytics",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_reports___analytics.png"
+    },
+    {
+      "name": "phase1_admin_Activity Log",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_activity_log.png"
+    },
+    {
+      "name": "phase1_admin_Time Tracking",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_time_tracking.png"
+    },
+    {
+      "name": "phase1_admin_Notifications",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_notifications.png"
+    },
+    {
+      "name": "phase1_admin_Settings",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_admin_settings.png"
+    },
+    {
+      "name": "phase1_client_cockpit",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase1_client_cockpit.png"
+    },
+    {
+      "name": "phase2_rbac_ADMIN",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase2_rbac_admin.png"
+    },
+    {
+      "name": "phase2_rbac_PROJECT_LEAD",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase2_rbac_project_lead.png"
+    },
+    {
+      "name": "phase2_rbac_STAFF",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase2_rbac_staff.png"
+    },
+    {
+      "name": "phase2_rbac_CLIENT",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase2_rbac_client.png"
+    },
+    {
+      "name": "phase3_login_failed",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_login_failed.png"
+    },
+    {
+      "name": "phase3_dashboard_admin",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_dashboard_admin.png"
+    },
+    {
+      "name": "phase3_theme_toggled",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_theme_toggled.png"
+    },
+    {
+      "name": "phase3_language_toggled",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_language_toggled.png"
+    },
+    {
+      "name": "phase3_kanban_board",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_kanban_board.png"
+    },
+    {
+      "name": "phase3_chat",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_chat.png"
+    },
+    {
+      "name": "phase3_users",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_users.png"
+    },
+    {
+      "name": "phase3_clients",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_clients.png"
+    },
+    {
+      "name": "phase3_templates",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_templates.png"
+    },
+    {
+      "name": "phase3_settings",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_settings.png"
+    },
+    {
+      "name": "phase3_reports",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_reports.png"
+    },
+    {
+      "name": "phase3_activity",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_activity.png"
+    },
+    {
+      "name": "phase3_time_tracking",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_time_tracking.png"
+    },
+    {
+      "name": "phase3_notifications",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_notifications.png"
+    },
+    {
+      "name": "phase3_client_cockpit",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_client_cockpit.png"
+    },
+    {
+      "name": "phase3_staff_dashboard",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase3_staff_dashboard.png"
+    },
+    {
+      "name": "phase5_responsive_Mobile-360",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase5_responsive_mobile-360.png"
+    },
+    {
+      "name": "phase5_responsive_Mobile-375",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase5_responsive_mobile-375.png"
+    },
+    {
+      "name": "phase5_responsive_Mobile-414",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase5_responsive_mobile-414.png"
+    },
+    {
+      "name": "phase5_responsive_Tablet-768",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase5_responsive_tablet-768.png"
+    },
+    {
+      "name": "phase5_responsive_Tablet-820",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase5_responsive_tablet-820.png"
+    },
+    {
+      "name": "phase5_responsive_Desktop-1024",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase5_responsive_desktop-1024.png"
+    },
+    {
+      "name": "phase5_responsive_Desktop-1280",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase5_responsive_desktop-1280.png"
+    },
+    {
+      "name": "phase5_responsive_Desktop-1440",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase5_responsive_desktop-1440.png"
+    },
+    {
+      "name": "phase5_responsive_Desktop-1920",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase5_responsive_desktop-1920.png"
+    },
+    {
+      "name": "phase5_cockpit_mobile",
+      "path": "C:\\Users\\USER\\SubagaDigitalKreatif\\qa-screenshots\\phase5_cockpit_mobile.png"
+    }
+  ]
+}
