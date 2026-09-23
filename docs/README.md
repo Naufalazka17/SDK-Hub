@@ -1,6 +1,29 @@
-# SDK Orchestration Hub — Installation Guide
+# SDK Orchestration Hub — Installation & Deployment Guide
 
-Panduan instalasi lengkap untuk **SDK Orchestration Hub** di perangkat baru (developer & end-user).
+Panduan instalasi dan deployment lengkap untuk **SDK Orchestration Hub** di perangkat baru (developer & end-user).
+
+> 🎓 **Konteks Proyek**: Aplikasi ini dikembangkan sebagai **Tugas Besar Program Magang Industri** dengan klien dan penerima manfaat langsung adalah **PT Subaga Digital Kreatif**.
+
+---
+
+## 👥 Tim Pengembang Magang (Internship Project Team)
+
+Aplikasi ini dikembangkan dan diuji oleh tim magang dengan pembagian peran:
+
+| Nama Anggota | Peran Utama | Tanggung Jawab Utama |
+|---|---|---|
+| **Naufal Azka Pradifa Utomo** | **Backend Developer** | Arsitektur Basis Data PostgreSQL (Supabase), REST & Realtime API, Security Middleware & RBAC Multi-Tenant Scoping |
+| **Hadid Firdaus** | **UI/UX Designer** | Perancangan Design System, Riset Pengguna, Wireframing, High-Fidelity Prototype, Aset Grafis & Usability Testing |
+| **Muhammad Abrurrahman Arrody** | **Frontend Developer** | Rekayasa Frontend React 19 / TypeScript / Vite, Global State Management, Kanban `@dnd-kit`, **Lead Quality Assurance (QA)** & PWA Integration |
+
+*Seluruh anggota tim magang berkolaborasi aktif dalam pengujian mutu (QA Audit), optimasi performa, dan penyusunan dokumentasi.*
+
+---
+
+## 🏢 Klien / Organisasi Penerima Manfaat
+- **Perusahaan**: PT Subaga Digital Kreatif
+- **Alamat**: Talavera Office Park 28th Floor, Jl. T. B. Simatupang Kav. 22–26, Cilandak Barat, Jakarta Selatan 12430
+- **Website**: [www.subagakreatif.com](https://www.subagakreatif.com) • **Email**: admin@subagakreatif.com
 
 ---
 
@@ -418,23 +441,68 @@ CREATE POLICY "Allow All Inserts" ON notifications FOR ALL USING (true);
 
 ---
 
-### 4. Seed Data Demo Awal
+### 4. Seed Data Demo & Tim Pengembang Awal
 
-Tambahkan akun default untuk pengujian sistem:
+Tambahkan data acuan, akun default, dan profil tim pengembang ke database:
 
 ```sql
--- Masukkan profil demo
-INSERT INTO profiles (email, full_name, role_id, department, position) VALUES
-  ('arya.admin@subaga.id', 'Arya Subaga', 'ADMIN', 'Executive', 'Administrator Utama'),
-  ('ulba.lead@subaga.id', 'Ulba', 'PROJECT_LEAD', 'Project Delivery', 'Senior Project Lead'),
-  ('andi.qa@subaga.id', 'Andi Kusuma', 'STAFF', 'Engineering', 'Lead QA Engineer'),
-  ('dr.budi@rsud-sehat.id', 'dr. Budi Santoso', 'CLIENT', 'Klien', 'Direktur IT RSUD Sehat')
+-- 1. SEED DATA MITRA KLIEN
+INSERT INTO clients (id, name, company, pic_name, pic_email, pic_phone) VALUES
+  ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'RSUD Kota Digital', 'PT Medika Sejahtera Digital', 'dr. Budi Santoso, Sp.A', 'dr.budi@rsud-sehat.id', '+62 811-2345-6789'),
+  ('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'Kementerian Komunikasi & Informatika', 'Ditjen Aplikasi Informatika', 'Ir. Hendra Wijaya, M.Kom', 'hendra@kominfo.go.id', '+62 812-9876-5432'),
+  ('8e816f28-4f81-40d7-9aeb-c5a6b401e60f', 'Subaga Digital Kreatif', 'PT Subaga Digital Kreatif', 'Arya Subaga', 'arya.admin@subaga.id', '+62 813-1122-3344')
+ON CONFLICT (id) DO NOTHING;
+
+-- 2. SEED DATA PROFIL PENGGUNA
+INSERT INTO profiles (id, email, full_name, role_id, client_id, department, position) VALUES
+  ('11111111-1111-1111-1111-111111111111', 'arya.admin@subaga.id', 'Arya Subaga', 'ADMIN', NULL, 'Executive Management', 'Chief Executive Officer'),
+  ('22222222-2222-2222-2222-222222222222', 'ulba.lead@subaga.id', 'Ulba', 'PROJECT_LEAD', NULL, 'Project Management', 'Senior Project Lead'),
+  ('44444444-4444-4444-4444-444444444444', 'andi.qa@subaga.id', 'Andi Kusuma', 'STAFF', NULL, 'Quality Assurance', 'Lead QA Engineer'),
+  ('33333333-3333-3333-3333-333333333333', 'mukhlis.dev@subaga.id', 'Mukhlis Pratama', 'STAFF', NULL, 'Engineering', 'Senior Fullstack Engineer'),
+  ('55555555-5555-5555-5555-555555555555', 'dina.designer@subaga.id', 'Dina Lestari', 'STAFF', NULL, 'Product Design', 'UI/UX Designer'),
+  ('66666666-6666-6666-6666-666666666666', 'dr.budi@rsud-sehat.id', 'dr. Budi Santoso', 'CLIENT', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'Stakeholder Eksternal', 'Direktur IT & Transformasi Digital RSUD')
 ON CONFLICT (email) DO NOTHING;
 
--- Masukkan klien demo
-INSERT INTO clients (name, company, pic_name, pic_email, pic_phone) VALUES
-  ('RSUD Sehat', 'PT Medika Sejahtera Digital', 'dr. Budi Santoso', 'dr.budi@rsud-sehat.id', '+62 812-3456-7890')
-ON CONFLICT DO NOTHING;
+-- 3. SEED PROFIL TIM MAGANG (INTERNSHIP CREATORS)
+INSERT INTO profiles (email, full_name, role_id, department, position) VALUES
+  ('naufal.backend@subaga.id', 'Naufal Azka Pradifa Utomo', 'STAFF', 'Engineering', 'Backend Developer & Database Architect (Intern)'),
+  ('hadid.designer@subaga.id', 'Hadid Firdaus', 'STAFF', 'Product Design', 'UI/UX Designer & Researcher (Intern)'),
+  ('arrody.frontend@subaga.id', 'Muhammad Abrurrahman Arrody', 'STAFF', 'Engineering', 'Frontend Developer & QA Lead (Intern)')
+ON CONFLICT (email) DO NOTHING;
+
+-- 4. SEED DATA PROYEK
+INSERT INTO projects (id, code, title, description, client_id, lead_id, stage, delivery_model, health_score, progress_percentage, budget, start_date, target_end_date) VALUES
+  (
+    '10101010-1010-1010-1010-101010101010',
+    'SDK-PRJ-2026-001',
+    'Sistem Informasi Kesehatan RSUD',
+    'Pengembangan sistem rekam medis elektronik (RME) terintegrasi SatuSehat Kemenkes dan bridging BPJS VClaim.',
+    'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+    '22222222-2222-2222-2222-222222222222',
+    'DEVELOPMENT',
+    'Custom Development',
+    98,
+    75,
+    350000000,
+    '2026-01-15',
+    '2026-10-31'
+  ),
+  (
+    '20202020-2020-2020-2020-202020202020',
+    'SDK-PRJ-2026-002',
+    'Social Analysis Big Data & Sentiment',
+    'Pipeline pengolahan opini publik berbasis AI dan analitik percakapan media sosial untuk analisis sentimen nasional.',
+    'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb',
+    '22222222-2222-2222-2222-222222222222',
+    'UAT',
+    'Subscription Service',
+    88,
+    90,
+    500000000,
+    '2026-02-01',
+    '2026-09-30'
+  )
+ON CONFLICT (id) DO NOTHING;
 ```
 
 ---

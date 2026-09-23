@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { 
   Search, Plus, Bell, ChevronDown, Check,
@@ -42,6 +42,23 @@ export const Header: React.FC<HeaderProps> = ({
   const [isNotifDropdownOpen, setIsNotifDropdownOpen] = useState(false);
   const [isProjectDropdownOpen, setIsProjectDropdownOpen] = useState(false);
   const [projectSearch, setProjectSearch] = useState('');
+
+  // Multi-tenant project scoping: clients only see projects assigned to them
+  const visibleProjects = useMemo(() => {
+    if (isClient || role === 'CLIENT') {
+      const clientOrgId = currentProfile?.client_id;
+      const profileEmail = currentProfile?.email?.toLowerCase();
+      return projects.filter((p) => {
+        if (clientOrgId && p.client_id === clientOrgId) return true;
+        if (p.client && (
+          (p.client as any).id === clientOrgId || 
+          (p.client as any).pic_email?.toLowerCase() === profileEmail
+        )) return true;
+        return false;
+      });
+    }
+    return projects;
+  }, [projects, isClient, role, currentProfile]);
 
   const profileRef = useRef<HTMLDivElement>(null);
   const notifRef = useRef<HTMLDivElement>(null);
@@ -194,6 +211,11 @@ export const Header: React.FC<HeaderProps> = ({
   const breadcrumbs = getBreadcrumbs();
   const recentNotifications = notifications.slice(0, 5);
 
+  // Resolve safely scoped project for header display
+  const activeHeaderProject = (isClient || role === 'CLIENT')
+    ? (visibleProjects.find((p) => p.id === currentProject?.id) || (visibleProjects.length > 0 ? visibleProjects[0] : null))
+    : currentProject;
+
   return (
     <header className="h-16 px-2.5 sm:px-4 lg:px-6 bg-[var(--bg-header)] border-b border-[var(--border-default)] flex items-center justify-between sticky top-0 z-30 min-w-0">
       {/* Left Area: Sidebar Toggle & Dynamic Breadcrumb */}
@@ -224,30 +246,48 @@ export const Header: React.FC<HeaderProps> = ({
           <Menu className="w-5 h-5" />
         </button>
 
-        {/* Project Selector Dropdown (Point 5) */}
+        {/* Project Selector Dropdown */}
         <div className="relative" ref={projectRef}>
           <button
             type="button"
-            onClick={() => setIsProjectDropdownOpen(!isProjectDropdownOpen)}
-            className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1.5 rounded-lg bg-[var(--bg-surface-subtle)] hover:bg-[var(--bg-surface)] border border-[var(--border-default)] hover:border-[var(--accent-primary)] transition-colors text-xs text-[var(--text-primary)] max-w-[120px] xs:max-w-[150px] sm:max-w-[280px] shadow-2xs group"
-            title={language === 'id' ? 'Pilih Proyek Aktif' : 'Select Active Project'}
+            onClick={() => {
+              // If client has only 1 project or no projects, do not open dropdown
+              if ((isClient || role === 'CLIENT') && visibleProjects.length <= 1) return;
+              setIsProjectDropdownOpen(!isProjectDropdownOpen);
+            }}
+            className={`flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1.5 rounded-lg bg-[var(--bg-surface-subtle)] hover:bg-[var(--bg-surface)] border border-[var(--border-default)] hover:border-[var(--accent-primary)] transition-colors text-xs text-[var(--text-primary)] max-w-[120px] xs:max-w-[150px] sm:max-w-[280px] shadow-2xs group ${
+              (isClient || role === 'CLIENT') && visibleProjects.length <= 1 ? 'cursor-default' : 'cursor-pointer'
+            }`}
+            title={
+              (isClient || role === 'CLIENT')
+                ? (language === 'id' ? `Proyek Klien Anda: ${activeHeaderProject?.title || ''}` : `Your Client Project: ${activeHeaderProject?.title || ''}`)
+                : (language === 'id' ? 'Pilih Proyek Aktif' : 'Select Active Project')
+            }
           >
             <FolderKanban className="w-3.5 h-3.5 text-[var(--accent-primary)] shrink-0" />
             <span className="font-mono font-bold text-[var(--accent-primary)] truncate max-w-[70px] xs:max-w-[100px] sm:max-w-none">
-              {currentProject?.code || 'PRJ'}
+              {activeHeaderProject?.code || 'PRJ'}
             </span>
             <span className="truncate font-semibold hidden sm:inline text-[var(--text-primary)]">
-              {currentProject?.title || (language === 'id' ? 'Pilih Proyek...' : 'Select Project...')}
+              {activeHeaderProject?.title || (language === 'id' ? 'Pilih Proyek...' : 'Select Project...')}
             </span>
-            <ChevronDown className="w-3 h-3 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] shrink-0 ml-auto transition-transform" />
+            {(!(isClient || role === 'CLIENT') || visibleProjects.length > 1) && (
+              <ChevronDown className="w-3 h-3 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] shrink-0 ml-auto transition-transform" />
+            )}
           </button>
 
           {isProjectDropdownOpen && (
             <div className="fixed inset-x-3 sm:absolute sm:left-0 sm:inset-x-auto mt-1.5 sm:w-84 max-w-sm bg-[var(--bg-surface-elevated)] border border-[var(--border-default)] rounded-xl shadow-2xl z-50 overflow-hidden animate-fade-in">
               <div className="p-2.5 border-b border-[var(--border-default)] bg-[var(--bg-surface)]">
                 <div className="text-[10px] font-bold text-[var(--text-secondary)] uppercase tracking-wider mb-1.5 flex items-center justify-between">
-                  <span>{language === 'id' ? 'Pilih Proyek Aktif' : 'Select Active Project'}</span>
-                  <span className="font-mono text-[10px] text-[var(--text-muted)]">{projects.length} {language === 'id' ? 'Proyek' : 'Projects'}</span>
+                  <span>
+                    {(isClient || role === 'CLIENT')
+                      ? (language === 'id' ? 'Proyek Klien Anda' : 'Your Client Projects')
+                      : (language === 'id' ? 'Pilih Proyek Aktif' : 'Select Active Project')}
+                  </span>
+                  <span className="font-mono text-[10px] text-[var(--text-muted)]">
+                    {visibleProjects.length} {language === 'id' ? 'Proyek' : 'Projects'}
+                  </span>
                 </div>
                 <div className="relative">
                   <Search className="w-3 h-3 absolute left-2.5 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" />
@@ -262,7 +302,7 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
 
               <div className="max-h-60 overflow-y-auto p-1.5 space-y-1">
-                {projects
+                {visibleProjects
                   .filter((p) =>
                     p.title.toLowerCase().includes(projectSearch.toLowerCase()) ||
                     p.code.toLowerCase().includes(projectSearch.toLowerCase())
@@ -277,15 +317,19 @@ export const Header: React.FC<HeaderProps> = ({
                           setCurrentProjectId(p.id);
                           setIsProjectDropdownOpen(false);
                           toast.success(language === 'id' ? `Proyek aktif: ${p.code} • ${p.title}` : `Active project: ${p.code} • ${p.title}`);
-                          const pathname = location.pathname;
-                          if (pathname.includes('/projects/') && pathname.includes('/board')) {
-                            navigate(`/projects/${p.id}/board`);
-                          } else if (pathname.includes('/projects/') && pathname.includes('/timeline')) {
-                            navigate(`/projects/${p.id}/timeline`);
-                          } else if (pathname.includes('/projects/') && pathname.includes('/cockpit')) {
-                            navigate(`/projects/${p.id}/cockpit`);
-                          } else if (pathname.includes('/projects/') && pathname.includes('/files')) {
-                            navigate(`/projects/${p.id}/files`);
+                          if (isClient || role === 'CLIENT') {
+                            navigate('/cockpit');
+                          } else {
+                            const pathname = location.pathname;
+                            if (pathname.includes('/projects/') && pathname.includes('/board')) {
+                              navigate(`/projects/${p.id}/board`);
+                            } else if (pathname.includes('/projects/') && pathname.includes('/timeline')) {
+                              navigate(`/projects/${p.id}/timeline`);
+                            } else if (pathname.includes('/projects/') && pathname.includes('/cockpit')) {
+                              navigate(`/projects/${p.id}/cockpit`);
+                            } else if (pathname.includes('/projects/') && pathname.includes('/files')) {
+                              navigate(`/projects/${p.id}/files`);
+                            }
                           }
                         }}
                         className={`w-full text-left p-2 rounded-lg flex items-center gap-2.5 transition-colors text-xs ${

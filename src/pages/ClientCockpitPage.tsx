@@ -43,7 +43,26 @@ export const ClientCockpitPage: React.FC = () => {
   const [uploadDescription, setUploadDescription] = useState('');
   const [isUploading, setIsUploading] = useState(false);
 
-  const activeProject = currentProject || (projects.length > 0 ? projects[0] : null);
+  // Multi-tenant project isolation for Client Cockpit
+  const clientOwnedProjects = React.useMemo(() => {
+    if (isClient || currentProfile?.role_id === 'CLIENT') {
+      const clientOrgId = currentProfile?.client_id;
+      const profileEmail = currentProfile?.email?.trim().toLowerCase();
+      return projects.filter((p) => {
+        if (clientOrgId && p.client_id === clientOrgId) return true;
+        if (p.client) {
+          if (clientOrgId && (p.client as any).id === clientOrgId) return true;
+          if (profileEmail && (p.client as any).pic_email?.trim().toLowerCase() === profileEmail) return true;
+        }
+        return false;
+      });
+    }
+    return projects;
+  }, [projects, isClient, currentProfile]);
+
+  const activeProject =
+    clientOwnedProjects.find((p) => p.id === currentProject?.id) ||
+    (clientOwnedProjects.length > 0 ? clientOwnedProjects[0] : null);
 
   const loadCockpitData = async () => {
     if (!activeProject) {
@@ -321,22 +340,31 @@ export const ClientCockpitPage: React.FC = () => {
         </div>
 
         <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
-          <div className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)] w-full sm:w-auto max-w-full">
-            <FolderKanban className="w-3.5 h-3.5 text-[var(--text-muted)] shrink-0" />
-            <select
-              value={activeProject?.id || ''}
-              onChange={(e) => {
-                if (e.target.value) setCurrentProjectId(e.target.value);
-              }}
-              className="px-2.5 py-1.5 bg-[var(--bg-input)] border border-[var(--border-default)] rounded-lg text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)] font-medium w-full sm:w-auto max-w-full sm:max-w-xs truncate"
-            >
-              {projects.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.code} - {p.title}
-                </option>
-              ))}
-            </select>
-          </div>
+          {clientOwnedProjects.length <= 1 ? (
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[var(--bg-surface-subtle)] border border-[var(--border-default)] rounded-lg text-xs font-semibold text-[var(--text-primary)] w-full sm:w-auto max-w-full">
+              <FolderKanban className="w-3.5 h-3.5 text-[var(--accent-primary)] shrink-0" />
+              <span className="font-mono text-[var(--accent-primary)]">{activeProject?.code || 'PRJ'}</span>
+              <span className="text-[var(--text-muted)]">•</span>
+              <span className="truncate max-w-[200px]">{activeProject?.title || (language === 'id' ? 'Proyek Klien' : 'Client Project')}</span>
+            </div>
+          ) : (
+            <div className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)] w-full sm:w-auto max-w-full">
+              <FolderKanban className="w-3.5 h-3.5 text-[var(--text-muted)] shrink-0" />
+              <select
+                value={activeProject?.id || ''}
+                onChange={(e) => {
+                  if (e.target.value) setCurrentProjectId(e.target.value);
+                }}
+                className="px-2.5 py-1.5 bg-[var(--bg-input)] border border-[var(--border-default)] rounded-lg text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)] font-medium w-full sm:w-auto max-w-full sm:max-w-xs truncate"
+              >
+                {clientOwnedProjects.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.code} - {p.title}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           <div className="flex items-center gap-2 w-full sm:w-auto">
             <button

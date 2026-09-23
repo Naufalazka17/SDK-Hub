@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, X, Folder, CheckSquare, MessageSquare, FileText, ArrowRight } from 'lucide-react';
+import { Search, X, Folder, CheckSquare, MessageSquare, FileText, ArrowRight, Building2 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { useAuth } from '../../contexts/AuthContext';
+import { useProject } from '../../contexts/ProjectContext';
 
 interface GlobalSearchModalProps {
   isOpen: boolean;
@@ -11,7 +13,10 @@ interface GlobalSearchModalProps {
 
 export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, onClose }) => {
   const { language } = useLanguage();
+  const { role, isClient } = useAuth();
+  const { projects: authorizedProjects, setCurrentProjectId } = useProject();
   const isId = language === 'id';
+  const isClientUser = isClient || role === 'CLIENT';
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState<{
     projects: any[];
@@ -55,19 +60,63 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
       setIsSearching(true);
       try {
         const term = `%${searchTerm.trim()}%`;
-        const [projRes, taskRes, msgRes, fileRes] = await Promise.all([
-          supabase.from('projects').select('id, title, code, stage').ilike('title', term).limit(4),
-          supabase.from('tasks').select('id, title, stage_key, priority, project_id').ilike('title', term).limit(6),
-          supabase.from('messages').select('id, content, conversation_id, created_at').ilike('content', term).limit(4),
-          supabase.from('files').select('id, name, category, project_id').ilike('name', term).limit(4),
-        ]);
+        let projList: any[] = [];
+        let taskList: any[] = [];
+        let msgList: any[] = [];
+        let fileList: any[] = [];
+
+        if (isClientUser) {
+          const allowedProjectIds = authorizedProjects.map((p) => p.id);
+          projList = authorizedProjects
+            .filter((p) => 
+              p.title.toLowerCase().includes(searchTerm.trim().toLowerCase()) ||
+              p.code.toLowerCase().includes(searchTerm.trim().toLowerCase())
+            )
+            .slice(0, 4);
+
+          if (allowedProjectIds.length > 0) {
+            const [taskRes, msgRes, fileRes] = await Promise.all([
+              supabase
+                .from('tasks')
+                .select('id, title, stage_key, priority, project_id')
+                .in('project_id', allowedProjectIds)
+                .ilike('title', term)
+                .limit(6),
+              supabase
+                .from('messages')
+                .select('id, content, conversation_id, created_at')
+                .ilike('content', term)
+                .limit(4),
+              supabase
+                .from('files')
+                .select('id, name, category, project_id')
+                .in('project_id', allowedProjectIds)
+                .ilike('name', term)
+                .limit(4),
+            ]);
+            taskList = taskRes.data || [];
+            msgList = msgRes.data || [];
+            fileList = fileRes.data || [];
+          }
+        } else {
+          const [projRes, taskRes, msgRes, fileRes] = await Promise.all([
+            supabase.from('projects').select('id, title, code, stage').ilike('title', term).limit(4),
+            supabase.from('tasks').select('id, title, stage_key, priority, project_id').ilike('title', term).limit(6),
+            supabase.from('messages').select('id, content, conversation_id, created_at').ilike('content', term).limit(4),
+            supabase.from('files').select('id, name, category, project_id').ilike('name', term).limit(4),
+          ]);
+          projList = projRes.data || [];
+          taskList = taskRes.data || [];
+          msgList = msgRes.data || [];
+          fileList = fileRes.data || [];
+        }
 
         if (isMounted) {
           setResults({
-            projects: projRes.data || [],
-            tasks: taskRes.data || [],
-            messages: msgRes.data || [],
-            files: fileRes.data || [],
+            projects: projList,
+            tasks: taskList,
+            messages: msgList,
+            files: fileList,
           });
         }
       } catch (err) {
@@ -81,7 +130,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
       isMounted = false;
       clearTimeout(timer);
     };
-  }, [searchTerm]);
+  }, [searchTerm, isClientUser, authorizedProjects]);
 
   if (!isOpen) return null;
 
@@ -133,20 +182,41 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                 {isId ? 'Akses Cepat' : 'Quick Access'}
               </div>
               <div className="grid grid-cols-2 gap-2">
-                <button
-                  onClick={() => { navigate('/kanban'); onClose(); }}
-                  className="flex items-center gap-2 p-2.5 rounded-lg border border-[var(--border-default)] hover:bg-[var(--bg-surface-subtle)] text-left text-xs font-medium text-[var(--text-primary)] transition-colors"
-                >
-                  <CheckSquare className="w-4 h-4 text-[var(--accent-primary)]" />
-                  {isId ? 'Orchestration Board' : 'Orchestration Kanban Board'}
-                </button>
-                <button
-                  onClick={() => { navigate('/chat'); onClose(); }}
-                  className="flex items-center gap-2 p-2.5 rounded-lg border border-[var(--border-default)] hover:bg-[var(--bg-surface-subtle)] text-left text-xs font-medium text-[var(--text-primary)] transition-colors"
-                >
-                  <MessageSquare className="w-4 h-4 text-emerald-400" />
-                  {isId ? 'Chat Tim Real-Time' : 'Real-Time Chat & Task Bridge'}
-                </button>
+                {isClientUser ? (
+                  <>
+                    <button
+                      onClick={() => { navigate('/cockpit'); onClose(); }}
+                      className="flex items-center gap-2 p-2.5 rounded-lg border border-[var(--border-default)] hover:bg-[var(--bg-surface-subtle)] text-left text-xs font-medium text-[var(--text-primary)] transition-colors"
+                    >
+                      <Building2 className="w-4 h-4 text-[var(--accent-primary)]" />
+                      {isId ? 'Kokpit Klien' : 'Client Cockpit'}
+                    </button>
+                    <button
+                      onClick={() => { navigate('/chat'); onClose(); }}
+                      className="flex items-center gap-2 p-2.5 rounded-lg border border-[var(--border-default)] hover:bg-[var(--bg-surface-subtle)] text-left text-xs font-medium text-[var(--text-primary)] transition-colors"
+                    >
+                      <MessageSquare className="w-4 h-4 text-emerald-400" />
+                      {isId ? 'Chat Proyek Real-Time' : 'Real-Time Project Chat'}
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => { navigate('/kanban'); onClose(); }}
+                      className="flex items-center gap-2 p-2.5 rounded-lg border border-[var(--border-default)] hover:bg-[var(--bg-surface-subtle)] text-left text-xs font-medium text-[var(--text-primary)] transition-colors"
+                    >
+                      <CheckSquare className="w-4 h-4 text-[var(--accent-primary)]" />
+                      {isId ? 'Orchestration Board' : 'Orchestration Kanban Board'}
+                    </button>
+                    <button
+                      onClick={() => { navigate('/chat'); onClose(); }}
+                      className="flex items-center gap-2 p-2.5 rounded-lg border border-[var(--border-default)] hover:bg-[var(--bg-surface-subtle)] text-left text-xs font-medium text-[var(--text-primary)] transition-colors"
+                    >
+                      <MessageSquare className="w-4 h-4 text-emerald-400" />
+                      {isId ? 'Chat Tim Real-Time' : 'Real-Time Chat & Task Bridge'}
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           )}
@@ -162,7 +232,12 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                   <button
                     key={proj.id}
                     onClick={() => {
-                      navigate(`/projects/${proj.id}`);
+                      setCurrentProjectId(proj.id);
+                      if (isClientUser) {
+                        navigate('/cockpit');
+                      } else {
+                        navigate(`/projects/${proj.id}`);
+                      }
                       onClose();
                     }}
                     className="w-full flex items-center justify-between p-2 rounded-lg hover:bg-[var(--bg-surface-subtle)] group text-left border border-transparent hover:border-[var(--border-default)] transition-colors"
@@ -189,7 +264,12 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                   <button
                     key={task.id}
                     onClick={() => {
-                      navigate('/kanban');
+                      if (task.project_id) setCurrentProjectId(task.project_id);
+                      if (isClientUser) {
+                        navigate('/cockpit');
+                      } else {
+                        navigate('/kanban');
+                      }
                       onClose();
                     }}
                     className="w-full flex items-center justify-between p-2 rounded-lg hover:bg-[var(--bg-surface-subtle)] group text-left border border-transparent hover:border-[var(--border-default)] transition-colors"
