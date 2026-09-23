@@ -10,22 +10,10 @@
 
     @page {
       size: A4;
-      margin: 20mm 15mm;
-      @bottom-center {
-        content: "SDK Orchestration Hub — User Manual v2.5 • Halaman " counter(page);
-        font-size: 8.5pt;
-        color: #64748B;
-        font-family: 'Inter', sans-serif;
-      }
+      margin: 18mm 15mm;
     }
 
     @page :first {
-      @bottom-center {
-        content: none;
-      }
-    }
-
-    @page cover {
       margin: 0;
     }
 
@@ -77,28 +65,96 @@
       }
       .page-break {
         page-break-before: always;
+        break-before: page;
+      }
+      .page-break-after {
+        page-break-after: always;
+        break-after: page;
       }
       .avoid-break {
         page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      .screenshot {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin: 14px 0 18px;
+      }
+      .screenshot img {
+        max-height: 380px !important;
+      }
+      table {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      .callout, .feature-card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      .steps > li {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      section[id] {
+        page-break-before: always;
+        break-before: page;
+      }
+      h1 {
+        page-break-before: always !important;
+        break-before: page !important;
+        page-break-after: avoid;
+        break-after: avoid;
+        margin-top: 0;
+        padding-top: 0;
+      }
+      .cover-page h1,
+      .toc h1,
+      h1.no-break {
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+        margin-top: 0;
+      }
+      h2 {
+        page-break-before: always !important;
+        break-before: page !important;
+        page-break-after: avoid;
+        break-after: avoid;
+        margin-top: 0;
+        padding-top: 0;
+      }
+      h1 + h2,
+      h1 + p + h2,
+      h1 + div + h2,
+      .no-break-top {
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+        margin-top: 16px;
       }
     }
 
     /* COVER PAGE */
     .cover-page {
       page: cover;
+      page-break-before: avoid;
+      break-before: avoid;
       page-break-after: always;
-      min-height: 280mm;
+      break-after: page;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      width: 100%;
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 60px 40px;
+      padding: 50px 40px;
       background: linear-gradient(145deg, #0B0F19 0%, #172033 100%);
       color: white;
       position: relative;
-      border-radius: 8px;
-      margin-bottom: 40px;
+      border-radius: 0;
+      margin: 0;
     }
 
     .cover-page::before {
@@ -166,34 +222,57 @@
       color: #F97316;
     }
 
-    /* HEADINGS */
+    /* HEADINGS - EVERY CHAPTER AND SUBSECTION TITLE STARTS AT BEGINNING OF PAGE */
+    section[id] {
+      page-break-before: always;
+      break-before: page;
+    }
+
     h1 {
-      font-size: 22pt;
+      font-size: 20pt;
       font-weight: 800;
       color: #F97316;
       border-bottom: 3px solid #F97316;
-      padding-bottom: 10px;
-      margin: 45px 0 22px;
-      page-break-before: always;
+      padding-bottom: 8px;
+      margin: 0 0 18px 0;
+      page-break-before: always !important;
+      break-before: page !important;
       page-break-after: avoid;
+      break-after: avoid;
       letter-spacing: -0.015em;
     }
 
-    h1:first-of-type,
+    .cover-page h1,
+    .toc h1,
     h1.no-break {
-      page-break-before: avoid;
-      margin-top: 10px;
+      page-break-before: avoid !important;
+      break-before: avoid !important;
+      margin-top: 0;
     }
 
     h2 {
-      font-size: 16pt;
+      font-size: 14.5pt;
       font-weight: 700;
       color: #0B0F19;
-      margin: 32px 0 14px;
+      margin: 0 0 14px 0;
+      padding-top: 0;
+      page-break-before: always !important;
+      break-before: page !important;
       page-break-after: avoid;
+      break-after: avoid;
       display: flex;
       align-items: center;
       gap: 8px;
+    }
+
+    /* First H2 immediately following H1 (or H1 + intro text) stays on the chapter start page */
+    h1 + h2,
+    h1 + p + h2,
+    h1 + div + h2,
+    .no-break-top {
+      page-break-before: avoid !important;
+      break-before: avoid !important;
+      margin-top: 16px;
     }
 
     h3 {
@@ -564,7 +643,7 @@
   <!-- ============================================= -->
   <!-- DOKUMEN & CONFIDENTIALITY -->
   <!-- ============================================= -->
-  <section class="avoid-break" style="margin-top: 30px;">
+  <section id="doc-control" style="page-break-before: always; break-before: page; padding-top: 10px;">
     <h2 style="margin-top: 0;">Informasi Pengendalian Dokumen & Tim Pengembang</h2>
     <table>
       <tr><td style="width: 28%;"><strong>Judul Dokumen</strong></td><td>SDK Orchestration Hub — User Manual & Panduan Operasional</td></tr>
@@ -586,7 +665,7 @@
     </table>
 
     <div class="callout warning">
-      <strong>⚠️ CONFIDENTIAL & PROPRIETARY</strong>
+      <strong>PERINGATAN: DOKUMEN TERTUTUP (CONFIDENTIAL & PROPRIETARY)</strong>
       Dokumen ini memuat informasi arsitektur alur kerja, standar operasi prosedur (SOP), dan rancangan fungsional milik PT Subaga Digital Kreatif. Dilarang menggandakan, menyebarluaskan, atau mempublikasikan sebagian atau seluruh dokumen ini tanpa persetujuan tertulis dari manajemen PT Subaga Digital Kreatif.
     </div>
   </section>
@@ -594,8 +673,8 @@
   <!-- ============================================= -->
   <!-- DAFTAR ISI -->
   <!-- ============================================= -->
-  <section class="toc" id="daftar-isi">
-    <h1 class="no-break">Daftar Isi</h1>
+  <section class="toc" id="daftar-isi" style="page-break-before: always; break-before: page; padding-top: 10px;">
+    <h1 style="page-break-before: avoid; margin-top: 0;">Daftar Isi</h1>
     <ul>
       <li>
         <a href="#pendahuluan"><span>1. Pendahuluan</span> <span class="page-num">01</span></a>
@@ -720,22 +799,22 @@
 
     <h2 id="fitur-utama">1.2 Pilar Fitur Utama</h2>
     <div class="feature-card">
-      <h4>🎨 1. Project Canvas & Inisiasi Adaptif</h4>
+      <h4>1. Project Canvas & Inisiasi Adaptif</h4>
       <p>Memungkinkan pengelola proyek memetakan tujuan bisnis (Business Objectives) ke model delivery yang presisi (Consulting, Custom Development, Subscription Service) untuk menghasilkan kerangka kerja (skeleton plan) otomatis.</p>
     </div>
 
     <div class="feature-card">
-      <h4>📋 2. Orchestration Board & Template Khusus</h4>
+      <h4>2. Orchestration Board & Template Khusus</h4>
       <p>Papan alur kerja berbasis Kanban modern dengan dukungan pelacakan dependensi, penandaan status terhambat (blocked tasks), dan otomatisasi penugasan berdasarkan kepakaran anggota tim.</p>
     </div>
 
     <div class="feature-card">
-      <h4>⏱️ 3. Resource & Timeline Orchestrator</h4>
+      <h4>3. Resource & Timeline Orchestrator</h4>
       <p>Mesin komputasi kapasitas cerdas yang memantau batas maksimum beban kerja tim (40 jam/minggu), memprediksi tabrakan jadwal, dan memvisualisasikan Gantt Chart multi-tahun.</p>
     </div>
 
     <div class="feature-card">
-      <h4>🏢 4. Client Cockpit (Portal Transparansi Klien)</h4>
+      <h4>4. Client Cockpit (Portal Transparansi Klien)</h4>
       <p>Ruang kerja khusus mitra luar untuk meninjau milestone progres secara real-time, mengunggah materi proyek, mengajukan revisi deliverable, dan menyetujui hasil kerja tanpa membuka celah data internal.</p>
     </div>
 
@@ -817,7 +896,7 @@
     </table>
 
     <div class="callout tip">
-      <strong>💡 Portabilitas PWA (Progressive Web App)</strong>
+      <strong>Catatan Teknis: Portabilitas PWA (Progressive Web App)</strong>
       SDK Orchestration Hub mendukung pemasangan PWA mandiri di desktop Windows/macOS maupun smartphone. Aplikasi dapat diakses langsung dari Home Screen tanpa perlu mengetikkan URL di browser setiap saat.
     </div>
   </section>
@@ -895,129 +974,129 @@
       <tbody>
         <tr>
           <td><strong>Dashboard Eksekutif (/)</strong></td>
-          <td style="text-align: center;">✅ Penuh</td>
-          <td style="text-align: center;">✅ Khusus Lead</td>
-          <td style="text-align: center;">✅ Khusus Staff</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
+          <td style="text-align: center;">Penuh</td>
+          <td style="text-align: center;">Khusus Lead</td>
+          <td style="text-align: center;">Khusus Staff</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
         </tr>
         <tr>
           <td><strong>Direktori Proyek (/projects)</strong></td>
-          <td style="text-align: center;">✅ Semua Proyek</td>
-          <td style="text-align: center;">✅ Semua Proyek</td>
-          <td style="text-align: center;">✅ Hanya Terdaftar</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
+          <td style="text-align: center;">Semua Proyek</td>
+          <td style="text-align: center;">Semua Proyek</td>
+          <td style="text-align: center;">Hanya Terdaftar</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
         </tr>
         <tr>
           <td><strong>Pembuatan Proyek Baru (/projects/new)</strong></td>
-          <td style="text-align: center;">✅ Ya</td>
-          <td style="text-align: center;">✅ Ya</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
+          <td style="text-align: center;">Ya</td>
+          <td style="text-align: center;">Ya</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
         </tr>
         <tr>
           <td><strong>Papan Kanban (/kanban)</strong></td>
-          <td style="text-align: center;">✅ Baca / Tulis</td>
-          <td style="text-align: center;">✅ Baca / Tulis</td>
-          <td style="text-align: center;">✅ Update Tugas</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
+          <td style="text-align: center;">Baca / Tulis</td>
+          <td style="text-align: center;">Baca / Tulis</td>
+          <td style="text-align: center;">Update Tugas</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
         </tr>
         <tr>
           <td><strong>Gantt Timeline (/timeline)</strong></td>
-          <td style="text-align: center;">✅ Penuh</td>
-          <td style="text-align: center;">✅ Penuh</td>
-          <td style="text-align: center;">👁️ Lihat Saja</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
+          <td style="text-align: center;">Penuh</td>
+          <td style="text-align: center;">Penuh</td>
+          <td style="text-align: center;">Lihat Saja</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
         </tr>
         <tr>
           <td><strong>Jadwal Global (/timeline/global)</strong></td>
-          <td style="text-align: center;">✅ Penuh</td>
-          <td style="text-align: center;">✅ Penuh</td>
-          <td style="text-align: center;">👁️ Lihat Saja</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
+          <td style="text-align: center;">Penuh</td>
+          <td style="text-align: center;">Penuh</td>
+          <td style="text-align: center;">Lihat Saja</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
         </tr>
         <tr>
           <td><strong>Client Cockpit (/cockpit)</strong></td>
-          <td style="text-align: center;">✅ Supervisi</td>
-          <td style="text-align: center;">✅ Supervisi</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
-          <td style="text-align: center;">✅ Portal Utama</td>
+          <td style="text-align: center;">Supervisi</td>
+          <td style="text-align: center;">Supervisi</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
+          <td style="text-align: center;">Portal Utama</td>
         </tr>
         <tr>
           <td><strong>Manajemen Sumber Daya (/resources)</strong></td>
-          <td style="text-align: center;">✅ Penuh</td>
-          <td style="text-align: center;">✅ Penuh</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
+          <td style="text-align: center;">Penuh</td>
+          <td style="text-align: center;">Penuh</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
         </tr>
         <tr>
           <td><strong>Repositori Berkas (/files)</strong></td>
-          <td style="text-align: center;">✅ Penuh</td>
-          <td style="text-align: center;">✅ Penuh</td>
-          <td style="text-align: center;">✅ Upload/Download</td>
-          <td style="text-align: center;">✅ Sesuai Proyek</td>
+          <td style="text-align: center;">Penuh</td>
+          <td style="text-align: center;">Penuh</td>
+          <td style="text-align: center;">Upload / Download</td>
+          <td style="text-align: center;">Sesuai Proyek</td>
         </tr>
         <tr>
           <td><strong>Chat Realtime (/chat)</strong></td>
-          <td style="text-align: center;">✅ Semua Channel</td>
-          <td style="text-align: center;">✅ Channel Proyek</td>
-          <td style="text-align: center;">✅ Channel Tim</td>
-          <td style="text-align: center;">✅ Channel Resmi</td>
+          <td style="text-align: center;">Semua Channel</td>
+          <td style="text-align: center;">Channel Proyek</td>
+          <td style="text-align: center;">Channel Tim</td>
+          <td style="text-align: center;">Channel Resmi</td>
         </tr>
         <tr>
           <td><strong>Presensi & Jam Kerja (/time-tracking)</strong></td>
-          <td style="text-align: center;">✅ Audit Seluruh Tim</td>
-          <td style="text-align: center;">✅ Rekapitulasi Tim</td>
-          <td style="text-align: center;">✅ Presensi Pribadi</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
+          <td style="text-align: center;">Audit Seluruh Tim</td>
+          <td style="text-align: center;">Rekapitulasi Tim</td>
+          <td style="text-align: center;">Presensi Pribadi</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
         </tr>
         <tr>
           <td><strong>Manajemen Klien (/clients)</strong></td>
-          <td style="text-align: center;">✅ Penuh</td>
-          <td style="text-align: center;">👁️ Lihat Saja</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
+          <td style="text-align: center;">Penuh</td>
+          <td style="text-align: center;">Lihat Saja</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
         </tr>
         <tr>
           <td><strong>Template Alur Kerja (/templates)</strong></td>
-          <td style="text-align: center;">✅ Buat & Edit</td>
-          <td style="text-align: center;">👁️ Gunakan Template</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
+          <td style="text-align: center;">Buat & Edit</td>
+          <td style="text-align: center;">Gunakan Template</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
         </tr>
         <tr>
           <td><strong>Manajemen Pengguna (/users)</strong></td>
-          <td style="text-align: center;">✅ Penuh (CRUD)</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
+          <td style="text-align: center;">Penuh (CRUD)</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
         </tr>
         <tr>
           <td><strong>Laporan & Analitik (/reports)</strong></td>
-          <td style="text-align: center;">✅ Penuh</td>
-          <td style="text-align: center;">✅ Laporan Proyek</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
+          <td style="text-align: center;">Penuh</td>
+          <td style="text-align: center;">Laporan Proyek</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
         </tr>
         <tr>
           <td><strong>Log Aktivitas Audit (/activity)</strong></td>
-          <td style="text-align: center;">✅ Penuh</td>
-          <td style="text-align: center;">👁️ Proyek Terkait</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
-          <td style="text-align: center;">❌ Dibatasi</td>
+          <td style="text-align: center;">Penuh</td>
+          <td style="text-align: center;">Proyek Terkait</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
+          <td style="text-align: center; color: #94A3B8;">Dibatasi</td>
         </tr>
         <tr>
           <td><strong>Notifikasi (/notifications)</strong></td>
-          <td style="text-align: center;">✅ Ada</td>
-          <td style="text-align: center;">✅ Ada</td>
-          <td style="text-align: center;">✅ Ada</td>
-          <td style="text-align: center;">✅ Ada</td>
+          <td style="text-align: center;">Tersedia</td>
+          <td style="text-align: center;">Tersedia</td>
+          <td style="text-align: center;">Tersedia</td>
+          <td style="text-align: center;">Tersedia</td>
         </tr>
         <tr>
           <td><strong>Pengaturan Akun (/settings)</strong></td>
-          <td style="text-align: center;">✅ Ada</td>
-          <td style="text-align: center;">✅ Ada</td>
-          <td style="text-align: center;">✅ Ada</td>
-          <td style="text-align: center;">✅ Ada</td>
+          <td style="text-align: center;">Tersedia</td>
+          <td style="text-align: center;">Tersedia</td>
+          <td style="text-align: center;">Tersedia</td>
+          <td style="text-align: center;">Tersedia</td>
         </tr>
       </tbody>
     </table>
@@ -1245,7 +1324,7 @@
     </div>
 
     <div class="callout warning">
-      <strong>⚠️ Penandaan Tugas Terhambat (Is Blocked)</strong>
+      <strong>Perhatian: Penandaan Tugas Terhambat (Is Blocked)</strong>
       Jika staf mengalami hambatan eksternal (misal: keterlambatan API mitra atau izin akses server), centang opsi <strong>Task is Blocked</strong> pada detail tiket dan tuliskan alasannya. Kartu tugas akan diberi highlight merah peringatan agar segera ditindaklanjuti Project Lead.
     </div>
 
@@ -1544,7 +1623,7 @@
     </ol>
 
     <div class="callout note">
-      <strong>⏱️ Kepatuhan Timesheet</strong>
+      <strong>Ketentuan: Kepatuhan Timesheet</strong>
       Pastikan selalu melakukan Clock In sebelum mulai menarik tugas di Kanban Board. Data presensi ini tersinkronisasi otomatis dengan rekapitulasi penilaian kinerja dan payroll bulanan.
     </div>
 
@@ -1857,19 +1936,19 @@
 
     <table>
       <tr>
-        <td style="width: 30%;"><strong>📧 Email Dukungan Resmi</strong></td>
+        <td style="width: 30%;"><strong>Email Dukungan Resmi</strong></td>
         <td><a href="mailto:admin@subagakreatif.com">admin@subagakreatif.com</a></td>
       </tr>
       <tr>
-        <td><strong>📞 Telepon / WhatsApp Helpline</strong></td>
+        <td><strong>Telepon / WhatsApp Helpline</strong></td>
         <td>+62-8131-8122-504</td>
       </tr>
       <tr>
-        <td><strong>🌐 Portal Web Resmi</strong></td>
+        <td><strong>Portal Web Resmi</strong></td>
         <td><a href="https://www.subagakreatif.com" target="_blank">www.subagakreatif.com</a></td>
       </tr>
       <tr>
-        <td><strong>📍 Alamat Kantor Operasional</strong></td>
+        <td><strong>Alamat Kantor Operasional</strong></td>
         <td>
           <strong>PT Subaga Digital Kreatif</strong><br>
           Talavera Office Park, 28th Floor<br>
@@ -1911,7 +1990,7 @@
     </table>
 
     <div class="callout info">
-      <strong>🕒 Jam Operasional Tim Support</strong>
+      <strong>Jam Operasional Tim Dukungan Teknis</strong>
       Senin – Jumat: 09:00 – 18:00 WIB • Sabtu: 09:00 – 13:00 WIB (Tiket darurat Severity 1 dimonitor 24/7).
     </div>
   </section>
@@ -1928,11 +2007,11 @@
 
     <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px 28px; max-width: 620px; margin: 15px auto 25px; text-align: left;">
       <h4 style="margin-top: 0; color: #0B0F19; font-size: 11pt; text-align: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; letter-spacing: 0.05em; text-transform: uppercase;">Tim Pengembang Magang:</h4>
-      <p style="margin: 8px 0; font-size: 10pt; line-height: 1.6;">👨‍💻 <strong>Naufal Azka Pradifa Utomo</strong> — Backend Developer (Database Architecture, API Integration & Security)</p>
-      <p style="margin: 8px 0; font-size: 10pt; line-height: 1.6;">🎨 <strong>Hadid Firdaus</strong> — UI/UX Designer (Design System, User Research & Usability Testing)</p>
-      <p style="margin: 8px 0; font-size: 10pt; line-height: 1.6;">⚡ <strong>Muhammad Abrurrahman Arrody</strong> — Frontend Developer (Core UI, State Management & Lead QA)</p>
+      <p style="margin: 8px 0; font-size: 10pt; line-height: 1.6;"><strong>Naufal Azka Pradifa Utomo</strong> — Backend Developer (Database Architecture, API Integration & Security)</p>
+      <p style="margin: 8px 0; font-size: 10pt; line-height: 1.6;"><strong>Hadid Firdaus</strong> — UI/UX Designer (Design System, User Research & Usability Testing)</p>
+      <p style="margin: 8px 0; font-size: 10pt; line-height: 1.6;"><strong>Muhammad Abrurrahman Arrody</strong> — Frontend Developer (Core UI, State Management & Lead QA)</p>
       <div style="border-top: 1px dashed #cbd5e1; margin-top: 12px; padding-top: 10px; font-size: 9.5pt; color: #64748B; text-align: center;">
-        🏢 <strong>Klien & Organisasi Penerima:</strong> PT Subaga Digital Kreatif
+        <strong>Klien & Organisasi Penerima:</strong> PT Subaga Digital Kreatif
       </div>
     </div>
 
